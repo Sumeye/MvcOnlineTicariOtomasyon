@@ -1,0 +1,23 @@
+﻿@model IEnumerable<MvcOnlineTicariOtomasyon.Models.Classes.CargoTracking>
+@{
+    ViewBag.Title = "CargoTracking";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<br />
+<table class="table table-striped">
+    <tr>
+        <th>Açıklama</th>
+        <th>Tarih</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Description</td>
+            <td>@item.Date</td>
+        </tr>
+    }
+</table>
+

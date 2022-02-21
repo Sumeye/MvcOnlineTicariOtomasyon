@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MvcOnlineTicariOtomasyon.Models.Classes.Current>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<table class="table table-striped">
+    <tr>
+        <th>Cari ID</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Şehir</th>
+        <th>Mail</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CurrentID</td>
+            <td>@item.CurrentName</td>
+            <td>@item.CurrentSurname</td>
+            <td>@item.CurrentCity</td>
+            <td>@item.CurrentEmail</td>
+            <td><a href="/Current/CurrentGet/@item.CurrentID" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Current/CurrentDelete/@item.CurrentID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Current/CustomerSales/@item.CurrentID" class="btn btn-primary">Satış Geçmişi</a></td>
+        </tr>
+    }
+</table>
+<a href="/Current/CurrentAdd" class="btn btn-primary">Yeni Cari Ekle</a>

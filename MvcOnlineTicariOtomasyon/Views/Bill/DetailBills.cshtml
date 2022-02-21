@@ -1,0 +1,32 @@
+﻿@model  IEnumerable<MvcOnlineTicariOtomasyon.Models.Classes.ExpenseItems>
+@{
+    ViewBag.Title = "BilsDetail";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Fatura Kalemleri</h2>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active"></li>
+</ol>
+<table class="table table-hover">
+    <tr>
+        <th>KalemID</th>
+        <th>Açıklama</th>
+        <th>Miktar</th>
+        <th>Birim Fiyat </th>
+        <th>Tutar</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ExpenseItemId</td>
+            <td>@item.Description</td>
+            <td>@item.Quantity</td>
+            <td>@item.UnitPrice</td>
+            <td>@item.Amount</td>
+        </tr>
+    }
+</table>
+
+<a href="/Bill/NewExpenseItems/" class="btn btn-primary" style="background-color:darksalmon">Yeni Kalem Girişi</a>

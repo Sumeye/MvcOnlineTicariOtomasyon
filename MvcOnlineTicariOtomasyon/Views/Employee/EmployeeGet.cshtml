@@ -1,0 +1,36 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Classes.Employees
+@{
+    ViewBag.Title = "EmployeeGet";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Cari Güncelleme</h2>
+<br />
+
+@using (Html.BeginForm("EmployeeUpdate", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.EmployeeID)
+    @Html.LabelFor(x => x.EmployeeName, "Personel Adı")
+    @Html.TextBoxFor(x => x.EmployeeName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.EmployeeName, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.EmployeeSurname, "Personel Soyadı")
+    @Html.TextBoxFor(x => x.EmployeeSurname, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.EmployeeSurname, "", new { @style = "color:orange" })
+    <br />
+
+    @Html.LabelFor(x => x.EmployeeImage, "Görsel")
+    @*@Html.TextBoxFor(x => x.EmployeeImage, new { @class = "form-control" })*@
+    <input type="file" name="EmployeeImage" />
+    <br />
+
+
+
+    @Html.LabelFor(x => x.Department.DepartmentName, "Departman Adı")
+    @Html.DropDownListFor(x => x.DepartmentId, (List<SelectListItem>)ViewBag.DepartmentList, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-warning">Güncelle</button>
+
+}

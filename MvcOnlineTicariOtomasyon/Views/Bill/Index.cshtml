@@ -1,0 +1,71 @@
+﻿@model  IEnumerable<MvcOnlineTicariOtomasyon.Models.Classes.Bills>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="margin-top:20px;">
+    <tr>
+        <th>Seri No/Sıra No</th>
+        <th>Tarih</th>
+        <th>Saat</th>
+        <th>Toplam</th>
+        <th>Güncelle</th>
+        <th>Teslim Detayları</th>
+        <th>Yeni Kalem</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.BillSerialNo @item.BillRowNumber</td>
+            <td>@item.CreateDate.ToShortDateString()</td>
+            <td>@item.Time</td>
+            <td>@item.TotalPrice ₺</td>
+            <td><a href="/Bill/GetBill/@item.BillID" class="btn btn-warning">Güncelle</a></td>
+
+            <td>
+                <a href="/Bill/DetailBills/@item.BillID" class="btn btn-default"
+                   style="background-color: darkcyan;
+                                                          color:white">Detay</a>
+            </td>
+            <td>
+                <a href="/Bill/DetailBills/@item.BillID" class="btn btn-default" style="background-color: thistle   ; color:white">Kalem</a>
+            </td>
+
+        </tr>
+    }
+</table>
+<a href="/Bill/AddBill" class="btn btn-info"> Yeni Fatura Girişi </a>
+<br />
+<br />
+<button type="button" class="btn btn-warning" style="background-color:#d95151; color:white" data-toggle="modal" data-target="#Modal1">Popup Penceresi</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Popup Dialog Ekranı</h2>
+            </div>
+
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Seri No</th>
+                        <th>Sıra No</th>
+                        <th>Toplam Tutar</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.BillSerialNo</td>
+                            <td>@item.BillRowNumber</td>
+                            <td>@item.TotalPrice</td>
+                        </tr>
+                    }
+                </table>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Tamam</button>
+            </div>
+
+        </div>
+    </div>
+</div>

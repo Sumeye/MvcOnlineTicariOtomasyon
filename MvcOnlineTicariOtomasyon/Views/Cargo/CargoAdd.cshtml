@@ -1,0 +1,32 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Classes.CargoDetail
+@{
+    ViewBag.Title = "CargoAdd";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Kargo Bilgisi Sayfası</h2>
+<br />
+
+<form class="form-group" action="/Cargo/CargoAdd" method="post">
+    @Html.LabelFor(x => x.TrackingCode, "Takip Kodu")
+    @*@Html.TextBoxFor(x => x.TrackingCode, new { @class = "form-control" })*@
+    <input  type="text" value="@ViewBag.TrackingCode" name="TrackingCode" class="form-control" readonly/>
+    <br />
+    @Html.LabelFor(x => x.Employee, "Personel")
+    @Html.TextBoxFor(x => x.Employee, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Consignee, "Alıcı")
+    @Html.TextBoxFor(x => x.Consignee, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Date, "Tarih")
+    @*@Html.TextAreaFor(x => x.Date, new { @class = "form-control" })*@
+    <input type="date" name="Date" class="form-control" />
+    <br />
+
+    @Html.LabelFor(x => x.Description, "Açıklama")
+    @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</form>
+

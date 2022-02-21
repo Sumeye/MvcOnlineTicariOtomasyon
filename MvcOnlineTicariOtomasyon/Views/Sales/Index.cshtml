@@ -1,0 +1,67 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Classes;
+@model List<SalesMovements>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+
+<div class="col-md-12">
+    <table id="tblSales" class="table table-bordered" style="margin-top:20px;">
+        <thead>
+            <tr>
+                <th>Satış ID</th>
+                <th>Ürün Adı</th>
+                <th>Cari</th>
+                <th>Personel </th>
+                <th>Adet</th>
+                <th>Fiyat</th>
+                <th>Toplam Tutar</th>
+                <th>Tarih</th>
+                <th>Güncelle</th>
+                <th>Detaylar</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.SalesID</td>
+                <td>@item.Products.ProductName</td>
+                <td>@item.Currents.CurrentName @item.Currents.CurrentSurname</td>
+                <td>@item.Employees.EmployeeName @item.Employees.EmployeeSurname</td>
+                <td>@item.Count</td>
+                <td>@item.Price</td>
+                <td>@item.TotalPrice</td>
+                <td>@item.Date</td>
+
+                <td><a href="/Sales/GetSales/@item.SalesID" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/Sales/SalesDetail/@item.SalesID" class="btn btn-danger">Detaylar</a></td>
+
+            </tr>
+        }
+    </table>
+    <a href="/Sales/NewSales" class="btn btn-primary"> Yeni Satış Yap </a>
+</div>
+
+
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<script>
+    $('#tblSales').dataTable({
+        "language": {
+
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+
+        }
+    });
+</script>
+
+

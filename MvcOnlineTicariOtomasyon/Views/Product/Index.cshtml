@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MvcOnlineTicariOtomasyon.Models.Classes.Products>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+{
+    <p>
+        Ürün Adı:@Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </p>
+}
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ÜRÜN ADI</th>
+        <th>MARKA</th>
+        <th>STOK</th>
+        <th>ALIŞ FİYAT</th>
+        <th>SATIŞ FİYAT</th>
+        <th>KATEGORİ</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>SATIŞ YAP</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.ProductName</td>
+    <td>@item.Branch</td>
+    <td>@item.Stock</td>
+    <td>@item.PurchasePrice ₺</td>
+    <td>@item.SalePrice ₺</td>
+    <td>@item.Categories.CategoryName</td>
+    <td>
+        <a href="/Product/ProductDelete/@item.ProductID" class="btn btn-danger">Sil </a>
+    </td>
+    <td>
+        <a href="/Product/ProductGet/@item.ProductID" class="btn btn-warning">Güncelle </a>
+    </td>
+    <td>
+        <a href="/Product/SellProduct/@item.ProductID" class="btn btn-primary">SatışYap </a>
+    </td>
+
+</tr>
+        }
+</table>
+
+<br />
+<a href="/Product/ProductAdd/" class="btn btn-primary">Yeni Ürün</a>

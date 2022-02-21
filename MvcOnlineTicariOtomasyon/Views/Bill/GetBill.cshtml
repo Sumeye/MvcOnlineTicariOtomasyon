@@ -1,0 +1,40 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Classes.Bills
+@{
+    ViewBag.Title = "GetBill";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+
+<h2>Fatura Güncelleme Sayfası</h2>
+<br />
+
+@using (Html.BeginForm("UpdateBill", "Bill", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.BillID)
+
+    @Html.LabelFor(x => x.BillSerialNo, "Seri No")
+    @Html.TextBoxFor(x => x.BillSerialNo, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.BillRowNumber, "Sıra No")
+    @Html.TextBoxFor(x => x.BillRowNumber, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.TaxOffice, "Vergi Dairesi")
+    @Html.TextBoxFor(x => x.TaxOffice, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.CreateDate, "Tarih")
+    @Html.TextBoxFor(x => x.CreateDate, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Time, "Saat")
+    @Html.TextBoxFor(x => x.Time, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.DeliveryPerson, "Teslim Eden")
+    @Html.TextBoxFor(x => x.DeliveryPerson, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Receiver, "Teslim Alan")
+    @Html.TextBoxFor(x => x.Receiver, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-primary">Güncelle</button>
+}
+

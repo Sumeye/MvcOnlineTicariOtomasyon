@@ -1,0 +1,42 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Classes.Products
+@{
+    ViewBag.Title = "ProductGet";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+
+<h2>Ürün Güncelleme Sayfası</h2>
+<br />
+
+@using (Html.BeginForm("ProductUpdate", "Product", FormMethod.Post))
+{
+    @Html.HiddenFor(x=>x.ProductID)
+
+    @Html.LabelFor(x => x.Categories.CategoryName, "Kategori Adı")
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.CategoryList, new { @class = "form-control" })
+
+    @Html.LabelFor(x => x.ProductName, "Ürün Adı")
+    @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Branch, "Marka")
+    @Html.TextBoxFor(x => x.Branch, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Stock, "Stok")
+    @Html.TextBoxFor(x => x.Stock, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.PurchasePrice, "Alış Fiyatı")
+    @Html.TextBoxFor(x => x.PurchasePrice, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.SalePrice, "Satış Fiyatı")
+    @Html.TextBoxFor(x => x.SalePrice, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Status, "Durum")
+    @Html.TextBoxFor(x => x.Status, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.ProductImage, "Ürün Görseli")
+    @Html.TextBoxFor(x => x.ProductImage, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-primary">Güncelle</button>
+}
+

@@ -1,0 +1,35 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Classes.ExpenseItems
+@{
+    ViewBag.Title = "NewExpenseItems";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Kalem Girişi</h2>
+<br />
+
+<form action="/Bill/NewExpenseItems" method="post" class="form-group">
+
+
+    @Html.LabelFor(x => x.Description, "Açıklama")
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Quantity, "Miktar")
+    @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.UnitPrice, "Birim Fiyat")
+    @Html.TextBoxFor(x => x.UnitPrice, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.Amount, "Tutar")
+    @Html.TextBoxFor(x => x.Amount, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.BillID, "Fatura Id")
+    @Html.TextBoxFor(x => x.BillID, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary"> Kaydet</button>
+</form>
+
+
