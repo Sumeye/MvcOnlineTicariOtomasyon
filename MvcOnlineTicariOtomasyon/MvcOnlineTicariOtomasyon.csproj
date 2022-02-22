@@ -55,6 +55,9 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -117,9 +120,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -147,6 +147,7 @@
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
+    <Compile Include="Controllers\GraphicController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -169,8 +170,10 @@
     <Compile Include="Models\Classes\Employees.cs" />
     <Compile Include="Models\Classes\Expense.cs" />
     <Compile Include="Models\Classes\ExpenseItems.cs" />
+    <Compile Include="Models\Classes\ProductGraphicModel.cs" />
     <Compile Include="Models\Classes\ProductDetail.cs" />
     <Compile Include="Models\Classes\ProductDetailViewModel.cs" />
+    <Compile Include="Models\Classes\ProductGraphicModel2.cs" />
     <Compile Include="Models\Classes\Products.cs" />
     <Compile Include="Models\Classes\SalesMovements.cs" />
     <Compile Include="Models\Classes\SimpleGrup3.cs" />
@@ -2931,6 +2934,13 @@
     <Content Include="Views\Cargo\CargoAdd.cshtml" />
     <Content Include="Views\Cargo\CargoTracking.cshtml" />
     <Content Include="Views\QR\Index.cshtml" />
+    <Content Include="Views\Graphic\Index.cshtml" />
+    <Content Include="Views\Graphic\Index2.cshtml" />
+    <Content Include="Views\Graphic\Index3.cshtml" />
+    <Content Include="Views\Graphic\Index4.cshtml" />
+    <Content Include="Views\Graphic\Index5.cshtml" />
+    <Content Include="Views\Graphic\Index6.cshtml" />
+    <Content Include="Views\Graphic\Index7.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
