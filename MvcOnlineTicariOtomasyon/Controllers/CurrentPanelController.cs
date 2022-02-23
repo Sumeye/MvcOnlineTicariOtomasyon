@@ -16,8 +16,18 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         public ActionResult Index()
         {
             var mail = (string)Session["CurrentEmail"];
-            var emailControl = db.Currents.FirstOrDefault(x => x.CurrentEmail == mail);
+            var emailControl = db.Messages.Where(x => x.Sender == mail).ToList();
             ViewBag.m = mail;
+            var mailId = db.Currents.Where(x => x.CurrentEmail == mail).Select(y => y.CurrentID).FirstOrDefault();
+            ViewBag.CurrentMailCount = mailId;
+            var totalSales = db.SalesMovements.Where(x => x.CurrentId == mailId).Count();
+            ViewBag.TotalSales = totalSales;
+            var totalAmount = db.SalesMovements.Where(x => x.CurrentId == mailId).Sum(y => (decimal?)y.TotalPrice) ?? 0;
+            ViewBag.TotalAmount = totalAmount;
+            var totalProductCount = db.SalesMovements.Where(x => x.CurrentId == mailId).Sum(y => (int?)y.Count) ?? 0;
+            ViewBag.TotalProductCount = totalProductCount;
+            var fullName = db.Currents.Where(x => x.CurrentEmail == mail).Select(y => y.CurrentName + " " + y.CurrentSurname).FirstOrDefault();
+            ViewBag.FullName = fullName;
             return View(emailControl);
         }
 
@@ -118,6 +128,33 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             FormsAuthentication.SignOut();
             Session.Abandon();
             return RedirectToAction("Index", "Login");
+        }
+
+        public  PartialViewResult CurrentSetting()
+        {
+            var mail = (string)Session["CurrentEmail"];
+            var id = db.Currents.Where(x => x.CurrentEmail == mail).Select(y => y.CurrentID).FirstOrDefault();
+            var currentFind = db.Currents.Find(id);
+            return PartialView("CurrentSetting", currentFind);
+        }
+
+        public PartialViewResult Notice()
+        {
+            var list = db.Messages.Where(x => x.Sender == "admin").ToList();
+            return PartialView(list);
+        }
+
+        public   ActionResult CurrentInformationUpdate(Current cr)
+        {
+            var current = db.Currents.Find(cr.CurrentID);
+            current.CurrentName = cr.CurrentName;
+            current.CurrentSurname = cr.CurrentSurname;
+            current.CurrentEmail = cr.CurrentEmail;
+            current.CurrentPassword = cr.CurrentPassword;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+
         }
     }
 }
