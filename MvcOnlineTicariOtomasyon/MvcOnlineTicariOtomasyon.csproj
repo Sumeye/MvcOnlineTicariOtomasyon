@@ -150,6 +150,7 @@
     <Compile Include="Controllers\GraphicController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductDetailController.cs" />
     <Compile Include="Controllers\QRController.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Models\Classes\Employees.cs" />
     <Compile Include="Models\Classes\Expense.cs" />
     <Compile Include="Models\Classes\ExpenseItems.cs" />
+    <Compile Include="Models\Classes\Messages.cs" />
     <Compile Include="Models\Classes\ProductGraphicModel.cs" />
     <Compile Include="Models\Classes\ProductDetail.cs" />
     <Compile Include="Models\Classes\ProductDetailViewModel.cs" />
@@ -2941,9 +2943,16 @@
     <Content Include="Views\Graphic\Index5.cshtml" />
     <Content Include="Views\Graphic\Index6.cshtml" />
     <Content Include="Views\Graphic\Index7.cshtml" />
+    <Content Include="Views\CurrentPanel\InComingMessages.cshtml" />
+    <Content Include="Views\CurrentPanel\SentMessages.cshtml" />
+    <Content Include="Views\CurrentPanel\MessageDetail.cshtml" />
+    <Content Include="Views\CurrentPanel\NewMessage.cshtml" />
+    <Content Include="Views\CurrentPanel\CargoTracking.cshtml" />
+    <Content Include="Views\CurrentPanel\CurrentCargoTracking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Messages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

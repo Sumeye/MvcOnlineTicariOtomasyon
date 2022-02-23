@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MvcOnlineTicariOtomasyon.Models.Classes
 {
-    public class Context:DbContext
+    public class Context : DbContext
     {
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Current> Currents { get; set; }
@@ -22,6 +22,7 @@ namespace MvcOnlineTicariOtomasyon.Models.Classes
         public DbSet<TodoList> todoLists { get; set; }
         public DbSet<CargoDetail> CargoDetails { get; set; }
         public DbSet<CargoTracking> cargoTrackings { get; set; }
+        public DbSet<Messages> Messages { get; set; }
 
 
     }

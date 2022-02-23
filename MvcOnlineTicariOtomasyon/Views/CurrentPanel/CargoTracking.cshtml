@@ -1,0 +1,45 @@
+﻿@model  IEnumerable<MvcOnlineTicariOtomasyon.Models.Classes.CargoDetail>
+@{
+    ViewBag.Title = "CargoTracking";
+    Layout = "~/Views/Shared/_CurrentLayout.cshtml";
+}
+
+<h2>Kargolar</h2>
+<br />
+@using (Html.BeginForm("CargoTracking", "CurrentPanel", FormMethod.Get))
+{
+    <p>
+        Kargo Takip Numarası @Html.TextBox("p")
+        <input type="submit" value="Ara" class="btn btn-primary" />
+        <br />
+        <span style="color:red">@ViewBag.HataMesaji</span>
+    </p>
+}
+<table class="table table-bordered" style="margin-top:20px;">
+    <tr>
+        <th>Personel</th>
+        <th>Alıcı</th>
+        <th>Tarih</th>
+        <th>Kargo Takip Kodu</th>
+        <th>Detaylar</th>
+    </tr>
+    @if (Model != null && Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Employee</td>
+                <td>@item.Consignee</td>
+                <td>@item.Date</td>
+                <td>@item.TrackingCode</td>
+                <td>
+                    <a href="/CurrentPanel/CurrentCargoTracking/@item.TrackingCode" class="btn btn-default"
+                       style="background-color: darkcyan;color:white">Detay</a>
+                </td>
+
+            </tr>
+        }
+    }
+</table>
+
+
