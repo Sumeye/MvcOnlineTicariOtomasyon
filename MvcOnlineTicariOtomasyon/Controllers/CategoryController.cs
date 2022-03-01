@@ -13,9 +13,9 @@ namespace MvcOnlineTicariOtomasyon.Controllers
     {
         // GET: Category
         Context db = new Context();
-        public ActionResult Index(int page=1)
+        public ActionResult Index(int page = 1)
         {
-            var categoryList = db.Categories.ToList().ToPagedList(page,4);
+            var categoryList = db.Categories.ToList().ToPagedList(page, 4);
             return View(categoryList);
         }
 
@@ -43,7 +43,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         public ActionResult CategoryGet(int id)
         {
             var cat = db.Categories.Find(id);
-            return View("CategoryGet",cat);
+            return View("CategoryGet", cat);
         }
 
         [HttpPost]
@@ -55,5 +55,27 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public ActionResult GetCategory()
+        {
+            CategoriesViewModel categories = new CategoriesViewModel();
+            categories.Categories = new SelectList(db.Categories, "CategoryID", "CategoryName");
+            categories.Products = new SelectList(db.Products, "ProductID", "ProductName");
+            return View(categories);
+        }
+        public JsonResult GetProduct(int p)
+        {
+            var productList = (from x in db.Products
+                               join y in db.Categories
+                               on x.Categories.CategoryID equals y.CategoryID
+                               where x.Categories.CategoryID == p
+                               select new
+                               {
+                                   Text = x.ProductName,
+                                   Value = x.ProductID.ToString()
+                               }).ToList() ;
+
+            return Json(productList, JsonRequestBehavior.AllowGet);
+        }
     }
 }

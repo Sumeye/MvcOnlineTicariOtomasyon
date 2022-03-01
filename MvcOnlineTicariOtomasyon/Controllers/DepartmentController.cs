@@ -7,6 +7,7 @@ using MvcOnlineTicariOtomasyon.Models.Classes;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+   [Authorize]
     public class DepartmentController : Controller
     {
         // GET: Department
@@ -17,6 +18,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View(departmentList);
         }
 
+        [Authorize(Roles ="A")]
         public ActionResult DepartmentAdd()
         {
             return View();

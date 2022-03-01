@@ -72,6 +72,43 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             db.ExpenseItems.Add(items);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+
+        public ActionResult DynamicBill()
+        {
+            BillDynamicViewModel dynamicViewModel = new BillDynamicViewModel();
+            dynamicViewModel.Bills = db.Bills.ToList();
+            dynamicViewModel.ExpenseItems = db.ExpenseItems.ToList();
+            return View(dynamicViewModel);
+        }
+
+        public ActionResult BillSave(Bills bills,ExpenseItems[] expenseItems)
+        {
+            Bills b = new Bills();
+            b.BillSerialNo = bills.BillSerialNo;
+            b.BillRowNumber = bills.BillRowNumber;
+            b.CreateDate = bills.CreateDate;
+            b.TaxOffice = bills.TaxOffice;
+            b.Time = bills.Time;
+            b.Receiver = bills.Receiver;
+            b.DeliveryPerson = bills.DeliveryPerson;
+            b.TotalPrice = bills.TotalPrice;
+            db.Bills.Add(b);
+            foreach (var item in expenseItems)
+            {
+                ExpenseItems eI = new ExpenseItems();
+                eI.Description = item.Description;
+                eI.UnitPrice = item.UnitPrice;
+                eI.BillID = item.BillID;
+                eI.Quantity = item.Quantity;
+                eI.Amount = item.Amount;
+                db.ExpenseItems.Add(eI);
+            }
+            db.SaveChanges();
+            return Json("İşlem Başarılı",JsonRequestBehavior.AllowGet);
+
+
 
         }
 
